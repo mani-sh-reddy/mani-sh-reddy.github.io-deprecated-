@@ -4,6 +4,7 @@ title: "Clean Terraform Dot Files"
 description: ""
 comments: false
 keywords: ""
+color: ""
 ---
 
 ```bash
