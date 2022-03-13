@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Better Git Log"
+title: "Git log pretty formatting"
 description: ""
 comments: false
 keywords: ""
