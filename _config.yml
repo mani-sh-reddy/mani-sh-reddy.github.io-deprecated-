@@ -55,7 +55,7 @@ exclude:
   - ".rbenv-version"
   - "package.json"
   - "gulpfile.js"
-  # - "README.md"
+  - "README.md"
   - "Rakefile"
   - "changelog.md"
   - "script"
