@@ -1,0 +1,132 @@
+$colors: (
+    light: (
+        background: #fff,
+        foreground: #505050,
+        heading: #989eaa,
+        link: #5fb4b4,
+        accent-500: #5fb4b4,
+        link-hover: #467276,
+        sublabel: #626773,
+        code-background: #e9e9e9,
+        preborder: #24282d,
+        none: none,
+
+        code-black: hsl(0, 0%, 0%),
+        code-blue: hsl(210, 50%, 60%),
+        code-blue2: hsl(209, 13%, 35%),
+        code-blue3: hsl(210, 15%, 24%),
+        code-blue4: hsl(0, 0%, 60%),
+        code-blue5: hsl(180, 36%, 54%),
+        code-blue6: hsl(221, 12%, 69%),
+        code-green: hsl(114, 31%, 50%),
+        code-grey: hsl(0, 0%, 20%),
+        code-orange: hsl(32, 93%, 66%),
+        code-orange2: hsl(32, 85%, 55%),
+        code-orange3: hsl(40, 94%, 68%),
+        code-pink: hsl(300, 30%, 68%),
+        code-red: hsl(357, 79%, 65%),
+        code-red2: hsl(13, 93%, 66%),
+        code-white: hsl(0, 0%, 20%),
+        code-white2: hsl(0, 0%, 20%),
+        code-white3: hsl(0, 0%, 20%),
+
+
+        /b/lue": "hsl(210, 50%, 60%)",
+        blu/e/2": "hsl(180, 36%, 54%)",
+        /g/reen": "hsl(114, 31%, 68%)",
+        /g/rey": "hsl(0, 0%, 73%)",
+        gre/y/2": "hsl(0, 0%, 60%)",
+        gre/y/3": "hsl(0, 0%, 20%)",
+        /o/range": "hsl(32, 93%, 66%)",
+        ora/n/ge2": "hsl(32, 85%, 55%)",
+        ora/n/ge3": "hsl(40, 94%, 68%)",
+        /p/ink": "hsl(300, 30%, 68%)",
+        /r/ed": "hsl(357, 79%, 65%)",
+        r/ed/2/": "hsl(13, 93%, 66%)",
+        re/d/3/": "hsl(16, 29%, 54%)",
+        /w/hite": "hsl(0, 0%, 97%)",
+        whi/t/e2": "hsl(210, 11%, 85%)",
+        whi/t/e3": "hsl(204, 10%, 90%)",
+        whi/t/e4": "hsl(195, 11%, 93%)",
+        white5": "hsl(180, 9%, 98%)"
+
+
+        ),
+    dark: (
+        background: #303841,
+        foreground: #d8dee9,
+        heading: #989eaa,
+        link: #5fb4b4,
+        accent-500: #5fb4b4,
+        link-hover: #467276,
+        sublabel: #626773,
+        code-background: #2a2f34,
+        preborder: #24282d,
+
+        none: none,
+
+        code-black: hsl(0, 0%, 0%),
+        code-blue: hsl(210, 50%, 60%),
+        code-blue2: hsl(209, 13%, 35%),
+        code-blue3: hsl(210, 15%, 24%),
+        code-blue4: hsl(210, 13%, 45%),
+        code-blue5: hsl(180, 36%, 54%),
+        code-blue6: hsl(221, 12%, 69%),
+        code-green: hsl(114, 31%, 68%),
+        code-grey: hsl(0, 0%, 20%),
+        code-orange: hsl(32, 93%, 66%),
+        code-orange2: hsl(32, 85%, 55%),
+        code-orange3: hsl(40, 94%, 68%),
+        code-pink: hsl(300, 30%, 68%),
+        code-red: hsl(357, 79%, 65%),
+        code-red2: hsl(13, 93%, 66%),
+        code-white: hsl(0, 0%, 100%),
+        code-white2: hsl(0, 0%, 97%),
+        code-white3: hsl(219, 28%, 88%),
+
+
+        ),
+    );
+
+$color-placeholder: 'here';
+
+
+@function compose-color-variable($color-key) {
+    @return '--color-#{$color-key}';
+}
+
+:root {
+    @each $key, $value in map-get($colors, 'light') {
+        #{compose-color-variable($key)}: #{$value};
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @each $key, $value in map-get($colors, 'dark') {
+            #{compose-color-variable($key)}: #{$value};
+        }
+    }
+}
+
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if not $index {
+        @return $string;
+    }
+
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+}
+
+@function color-get($palette, $color-key) {
+    @return map-get(map-get($colors, $palette), $color-key);
+}
+
+@mixin color-assign($property, $color-key, $template: '') {
+    $fallback: #{color-get("light", $color-key)};
+    $var: var(#{compose-color-variable($color-key)});
+
+    #{$property}: if(str-length($template) == 0, $fallback, #{str-replace($template, $color-placeholder, $fallback)});
+    #{$property}: if(str-length($template) == 0, $var, #{str-replace($template, $color-placeholder, $var)});
+}

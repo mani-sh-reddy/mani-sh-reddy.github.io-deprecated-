@@ -6,3 +6,88 @@
 
 @import "layout";
 @import "syntax-highlighting";
+
+@import 'colors';
+
+body {
+	@include color-assign(background-color, background);
+	@include color-assign(color, primary-500);
+
+	a {
+		@include color-assign(color, accent-500);
+		&:hover {
+			@include color-assign(color, link-hover);
+		}
+	}
+
+	p {
+		@include color-assign(color, foreground);
+	}
+
+	.post-item a {
+		@include color-assign(color, foreground);
+	}
+
+	.post-title {
+		@include color-assign(color, foreground);
+	}
+
+	.date-label {
+		@include color-assign(color, heading);
+	}
+
+	.post-meta {
+		@include color-assign(color, heading);
+	}
+
+	.site-footer small {
+		@include color-assign(color, heading);
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		@include color-assign(color, heading);
+	}
+
+	.link{
+		@include color-assign(color, link);
+	}
+
+	.logo{
+		@include color-assign(color, link);
+		&:hover {
+			@include color-assign(color, link-hover);
+		}
+	}
+
+	.site-header {
+		@include color-assign(border-bottom-color, code-background);
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		margin-bottom: .75em;
+		min-height: 80px;
+	}
+
+	.link:hover {
+		border-bottom: 2px solid #989eaa;
+	}
+
+	.site-footer a:hover {
+		border-bottom: 2px solid #989eaa;
+	}
+
+	pre {
+		border: none;
+	}
+
+	.highlight {
+		pre code {
+			@include color-assign(color, code-white);
+		}
+		.nt {@include color-assign(color, code-blue);}
+		.nb {@include color-assign(color, code-blue5);}
+		.nv {@include color-assign(color, code-green);}
+		.se, .s2, .s1 {@include color-assign(color, code-red);}
+		.c {@include color-assign(color, code-blue4);}
+	}
+
+}
