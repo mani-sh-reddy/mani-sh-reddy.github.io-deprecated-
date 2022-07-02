@@ -77,6 +77,7 @@ body {
 
 	pre {
 		border: none;
+		white-space: pre-wrap;
 	}
 
 	.highlight {
@@ -85,9 +86,17 @@ body {
 		}
 		.nt {@include color-assign(color, code-blue);}
 		.nb {@include color-assign(color, code-blue5);}
-		.nv {@include color-assign(color, code-green);}
+		.nv {@include color-assign(color, code-blue3);}
 		.se, .s2, .s1 {@include color-assign(color, code-red);}
 		.c {@include color-assign(color, code-blue4);}
+		.err {@include color-assign(color, code-red);}
+		.k {@include color-assign(color, code-blue3);}
+		.l {@include color-assign(color, code-blue2);}
+		.n {@include color-assign(color, code-blue1);}
+		.o {@include color-assign(color, code-green3);}
+		.p {@include color-assign(color, code-green2);}
+		.cm {@include color-assign(color, code-green1);}
+		.c1 {@include color-assign(color, code-red3);}
 	}
 
 }
