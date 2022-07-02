@@ -76,12 +76,17 @@ body {
 	}
 
 	pre {
+// 		white-space: pre-wrap;
 		border: none;
-		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+		word-break: break-all;
 	}
 
 	.highlight {
 		pre code {
+// 		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+		word-break: break-all;
 			@include color-assign(color, code-white);
 		}
 		.nt {@include color-assign(color, code-blue);}
