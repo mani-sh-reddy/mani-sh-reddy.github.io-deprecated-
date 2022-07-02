@@ -20,7 +20,7 @@ body {
 		}
 	}
 
-	p {
+	p, li {
 		@include color-assign(color, foreground);
 	}
 
