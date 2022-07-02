@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pull from origin/main for all repos in a directory"
+title: "recursive git pull"
 description: ""
 comments: false
 keywords: ""

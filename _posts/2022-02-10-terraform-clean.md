@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Clean terraform dot files"
+title: "rm .terraform files"
 description: ""
 comments: false
 keywords: ""

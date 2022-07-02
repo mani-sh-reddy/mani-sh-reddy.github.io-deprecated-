@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Search literal string with ripgrep"
+title: "ripgrep"
 description: ""
 comments: false
 keywords: ""
